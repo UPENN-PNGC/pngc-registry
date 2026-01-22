@@ -40,7 +40,7 @@ body:
     id: contact
     attributes:
       label:  Primary Contact
-      description: Name + email or GitHub handle
+      description: Name (email) or GitHub handle
     validations: 
       required: true
 
@@ -51,21 +51,13 @@ body:
       description: Select the single best category for your repository
       multiple: false
       options:
-        - AI
-        - annotation
-        - database
-        - data-processing
-        - FunGen
-        - GWAS
-        - ML
-        - pipelines
-        - QC
-        - single-cell
-        - statistical-analysis
-        - variant-calling
-        - visualization
-        - WES
-        - WGS
+        - Analysis / Pipelines
+        - Annotation
+        - Data Management
+        - Machine Learning / AI
+        - Quality Control
+        - Sequencing
+        - Visualization
     validations:
       required: true
 

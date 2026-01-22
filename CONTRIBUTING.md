@@ -30,25 +30,18 @@ Thank you for your interest in registering your repository with PNGC!
 - **README Quality**: Should include what it does and how to run it
 - **Funding Acknowledgment**: Optional but encouraged
 
+
 ### Approved Categories
 
 Please select the single most relevant category from this list:
 
-- `AI` - Artificial Intelligence
-- `annotation` - Annotation Tools
-- `database` - Database Tools
-- `data-processing` - Data Processing
-- `FunGen` - Functional Genomics
-- `GWAS` - Genome-Wide Association Studies
-- `ML` - Machine Learning
-- `pipelines` - Analysis Pipelines
-- `QC` - Quality Control
-- `single-cell` - Single Cell Analysis
-- `statistical-analysis` - Statistical Analysis
-- `variant-calling` - Variant Calling
-- `visualization` - Data Visualization
-- `WES` - Whole Exome Sequencing
-- `WGS` - Whole Genome Sequencing
+- `Analysis / Pipelines` - Data analysis tools and workflow pipelines
+- `Annotation` - Tools for annotating data or results
+- `Data Management` - Database, storage, or data organization tools
+- `Machine Learning / AI` - Machine learning or artificial intelligence tools
+- `Quality Control` - Tools for data or result quality assessment
+- `Sequencing` - Tools for sequencing data (WGS, WES, RNA, single-cell, etc.)
+- `Visualization` - Tools for visualizing data or results
 
 *If you need a category that's not listed, please suggest it in your registration issue.*
 
