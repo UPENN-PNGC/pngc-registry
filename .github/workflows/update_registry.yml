@@ -1,0 +1,31 @@
+name: Update PNGC Registry
+
+on:
+  issues:
+    types: [closed]
+
+jobs:
+  update-registry:
+    if: |
+      contains(github.event.issue.labels.*.name, 'approved') && contains(github.event.issue.labels.*.name, 'registration')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run registry update script
+        run: |
+          python .github/scripts/update_registry.py
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: 'chore: update registry table in README.md'
+          branch: registry-update/${{ github.run_id }}
+          title: 'Update registry table in README.md'
+          body: 'Automated registry update for approved registration.'

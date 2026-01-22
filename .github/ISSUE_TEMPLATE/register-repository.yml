@@ -1,0 +1,144 @@
+name: Register a Repository
+description: Submit your repository to the PNGC registry
+title: "[Registration] "
+labels: ["registration"]
+body: 
+  - type: markdown
+    attributes:
+      value: |
+        ## Register Your Repository
+        
+        Thank you for contributing to the PNGC registry!  Please fill out all required fields below.
+
+  - type: input
+    id:  lab-name
+    attributes:
+      label: Lab / Group Name
+      description: Name of your lab or research group
+      placeholder: "e.g., Smith Neurogenetics Lab"
+    validations: 
+      required: true
+
+  - type: input
+    id: repo-link
+    attributes:
+      label: Repository Link
+      description: Full GitHub URL to your repository
+      placeholder: "https://github.com/username/repository"
+    validations: 
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label:  Description
+      description:  Provide a 1-2 sentence description of what your repository does      
+    validations:
+      required: true
+
+  - type: input
+    id: contact
+    attributes:
+      label:  Primary Contact
+      description: Name + email or GitHub handle
+    validations: 
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label:  Category
+      description: Select the single best category for your repository
+      multiple: false
+      options:
+        - AI
+        - annotation
+        - database
+        - data-processing
+        - FunGen
+        - GWAS
+        - ML
+        - pipelines
+        - QC
+        - single-cell
+        - statistical-analysis
+        - variant-calling
+        - visualization
+        - WES
+        - WGS
+    validations:
+      required: true
+
+
+  - type: input
+    id: license
+    attributes:
+      label: License
+      description: What license does your repository use?
+      placeholder:  "e.g., MIT, GPL-3.0, Apache-2.0, or 'no license yet'"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: is-published
+    attributes:
+      label: Has this work been published?
+      options:
+        - "No"
+        - "Yes"
+    validations:
+      required: true
+
+  - type: input
+    id: doi-pubmed
+    attributes:
+      label: DOI or PubMed Link (if published)
+      description: Provide DOI or PubMed URL
+      placeholder: "https://doi.org/10.1038/xxxxx or https://pubmed.ncbi.nlm.nih.gov/12345678/"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: status
+    attributes:
+      label: Repository Status
+      description: Current maintenance status
+      options:
+        - active
+        - maintenance
+        - archived
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: readme-check
+    attributes:
+      label:  README Quality
+      description: Please confirm your README includes the following
+      options:
+        - label:  Describes what the tool/repository does
+        - label:  Includes instructions on how to run/use it
+
+  - type: textarea
+    id: funding
+    attributes:
+      label: Funding Acknowledgment (Optional)
+      description: List any funding sources you'd like to acknowledge
+      placeholder: "This work was supported by NIH grant R01-XXXXX"
+    validations: 
+      required: false
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Information
+      description:  Any other relevant information about your repository
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        **Note**: If you selected "other" for topic tag, please mention it in the Additional Information section.

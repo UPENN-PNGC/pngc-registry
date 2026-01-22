@@ -1,0 +1,35 @@
+name: Request Project Removal
+description: Request the removal of a repository from the PNGC registry
+labels: [removal]
+title: "[Removal] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Request Removal of a Repository
+        Please provide the following information to request removal of a project from the PNGC registry.
+
+  - type: input
+    id: repo-link
+    attributes:
+      label: Repository Link
+      description: Full GitHub URL of the repository to be removed
+      placeholder: "https://github.com/username/repository"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for Removal
+      description: Briefly explain why this repository should be removed from the registry
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Comments (Optional)
+      description: Any other information relevant to this request
+    validations:
+      required: false
