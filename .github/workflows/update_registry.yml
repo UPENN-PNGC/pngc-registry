@@ -29,3 +29,5 @@ jobs:
           branch: registry-update/${{ github.run_id }}
           title: 'Update registry table in README.md'
           body: 'Automated registry update for approved registration.'
+          labels: auto-merge
+          auto-merge: true

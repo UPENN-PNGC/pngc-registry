@@ -32,3 +32,5 @@ on:
           branch: registry-remove/${{ github.run_id }}
           title: 'Remove repository from registry table in README.md'
           body: 'Automated registry removal for approved removal.'
+          labels: auto-merge
+          auto-merge: true
