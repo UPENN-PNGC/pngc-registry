@@ -40,9 +40,20 @@ def parse_issue_body(body):
 
     lab = extract('Lab / Group Name')
     repo_url = extract('Repository Link')
-    repo_name = repo_url.rstrip('/').split('/')[-1] if repo_url else ''
+    repo_name = repo_url.rstrip('/').split('/')[-1]
     description = extract('Description')
     contact = extract('Primary Contact')
+    # If contact is in the form 'Name (email)', hyperlink the email
+    contact_is_email = re.match(r'(.+?)\s*\(([^)]+@[^)]+)\)', contact)
+    if contact_is_email:
+        name, email = contact_is_email.groups()
+        contact = f'{name} ([{email}](mailto:{email}))'
+    else:
+        # If contact is just an email, hyperlink it
+        contact_is_just_email = re.match(r'^([\w\.-]+@[\w\.-]+)$', contact)
+        if contact_is_just_email:
+            email = contact_is_just_email.group(1)
+            contact = f'[{email}](mailto:{email})'
     category = extract('Category')
     license_ = extract('License')
     published = extract('Has this work been published?')
@@ -53,7 +64,7 @@ def parse_issue_body(body):
 
     return [
         lab,
-        f'[{repo_name}]({repo_url})' if repo_url and repo_name else '',
+        f'[{repo_name}]({repo_url})',
         description,
         contact,
         category,
