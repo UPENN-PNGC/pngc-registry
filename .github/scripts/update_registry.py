@@ -83,15 +83,16 @@ def parse_issue_body(body):
 def update_registry_table(new_entry):
     with open(README_PATH, 'r') as f:
         content = f.read()
-    # Find the registry table and insert the new entry after the header
-    pattern = r"(\| Lab/Group .+?\| Status \|\n\|[-|]+\|\n)"
-    match = re.search(pattern, content, re.DOTALL)
+    # Find the first markdown table after the 'Registry' header
+    pattern = r"(## Registry[\s\S]*?\n)(\|[^\n]+\|\n\|[-| ]+\|\n)"
+    match = re.search(pattern, content)
     if not match:
         raise Exception('Registry table header not found in README.md')
-    table_header = match.group(1)
+    before_table = match.group(1)
+    table_header_and_sep = match.group(2)
     new_row = '| ' + ' | '.join(new_entry) + ' |\n'
-    # Insert new row after header
-    updated_content = content.replace(table_header, table_header + new_row)
+    # Insert new row after header and separator
+    updated_content = content.replace(before_table + table_header_and_sep, before_table + table_header_and_sep + new_row)
     with open(README_PATH, 'w') as f:
         f.write(updated_content)
 
