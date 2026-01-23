@@ -17,7 +17,6 @@ To submit a new partner project, see the [registration guide](CONTRIBUTING.md#ho
 
 | Lab/Group | Repository | Description | Contact | Category | License | Publication | Status | Funding |
 |-----------|------------|-------------|---------|----------|---------|-------------|--------|---------|
-| NIAGADS | [ADSPIntegratedPhenotypes](https://github.com/NIAGADS/ADSPIntegratedPhenotypes) | Starter workflows for approved ADSP (ng00067) users to combine sample/phenotype data and generate a genetically unique WGS cohort for Alzheimer’s case/control analysis. | NIAGADS ([help@niagads.org](mailto:help@niagads.org)) | Analysis / Pipelines | None |  | active |  |
 
 ---
 
