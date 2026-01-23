@@ -46,34 +46,22 @@ jobs:
           body: "Automated registry update for approved registration."
           labels: auto-merge
 
-      - name: Enable auto-merge for PR
+      - name: Wait for status checks
+        uses: lewagon/wait-on-check-action@v1.3.3
+        with:
+          ref: registry-update/${{ github.run_id }}
+          repo-token: ${{ steps.app-token.outputs.token }}
+          wait-interval: 10
+
+      - name: Merge PR with App token
         if: steps.cpr.outputs.pull-request-url != ''
         uses: actions/github-script@v7
         with:
           github-token: ${{ steps.app-token.outputs.token }}
           script: |
-            const mutation = `
-              mutation($pullRequestId: ID!, $mergeMethod: PullRequestMergeMethod!) {
-                enablePullRequestAutoMerge(input: {
-                  pullRequestId: $pullRequestId,
-                  mergeMethod: $mergeMethod
-                }) {
-                  pullRequest {
-                    autoMergeRequest {
-                      enabledAt
-                    }
-                  }
-                }
-              }
-            `;
-
-            const pr = await github.rest.pulls.get({
+            await github.rest.pulls.merge({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              pull_number: Number('${{ steps.cpr.outputs.pull-request-number }}')
-            });
-
-            await github.graphql(mutation, {
-              pullRequestId: pr.data.node_id,
-              mergeMethod: 'SQUASH'
+              pull_number: Number('${{ steps.cpr.outputs.pull-request-number }}'),
+              merge_method: 'squash'
             });
