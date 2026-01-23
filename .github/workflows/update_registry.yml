@@ -10,7 +10,6 @@ jobs:
       contains(github.event.issue.labels.*.name, 'approved') && contains(github.event.issue.labels.*.name, 'registration')
     runs-on: ubuntu-latest
     steps:
-
       - name: Generate GitHub App installation token
         id: app-token
         uses: actions/create-github-app-token@v1
@@ -26,22 +25,23 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: "3.x"
 
       - name: Install Python dependencies
         run: pip install requests
 
       - name: Run registry update script
         run: |
+          export GITHUB_TOKEN="${{ steps.app-token.outputs.token }}"
           python .github/scripts/update_registry.py
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ steps.app-token.outputs.token }}
-          commit-message: 'chore: update registry table in README.md'
+          commit-message: "chore: update registry table in README.md"
           branch: registry-update/${{ github.run_id }}
-          title: 'Update registry table in README.md'
-          body: 'Automated registry update for approved registration.'
+          title: "Update registry table in README.md"
+          body: "Automated registry update for approved registration."
           labels: auto-merge
           auto-merge: true

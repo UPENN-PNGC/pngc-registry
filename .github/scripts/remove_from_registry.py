@@ -13,7 +13,10 @@ API_URL = f"https://api.github.com/repos/{GITHUB_REPO}/issues"
 
 
 def get_most_recent_removal_issue():
-    headers = {'Authorization': f'token {GITHUB_TOKEN}'}
+    headers = {
+        'Authorization': f'token {GITHUB_TOKEN}', 
+        'Accept': 'application/vnd.github+json'
+    }
     params = {
         'state': 'closed',
         'labels': 'removal',
