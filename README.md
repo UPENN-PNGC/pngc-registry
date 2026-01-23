@@ -17,6 +17,7 @@ To submit a new partner project, see the [registration guide](CONTRIBUTING.md#ho
 
 | Lab/Group | Repository | Description | Contact | Category | License | Publication | Status | Funding |
 |-----------|------------|-------------|---------|----------|---------|-------------|--------|---------|
+|  | []() |  |  |  |  |  |  |  |
 
 ---
 
